@@ -1,0 +1,11 @@
+start the docker-compose
+ - docker-compose build --pull
+ - docker-compose up -d
+
+add the to the config the known hosts
+ - sudo docker-compose exec --user www-data app php occ config:system:set trusted_domains 1 -- value=cloud.zakawa.de
+ 
+and test it
+ - sudo docker-compose exec --user www-data app php occ config:system:get trusted_domains
+ 
+ 
