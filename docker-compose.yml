@@ -25,6 +25,7 @@ services:
       - nextcloud:/var/www/html
       - ${NEXTCLOUD_ROOT}/data:/mnt/storagespace/nextcloud/data
     environment:
+      - NEXTCLOUD_DATA_DIR=/mnt/storagespace/nextcloud/data
       - VIRTUAL_HOST=cloud.zakawa.de
       - LETSENCRYPT_HOST=cloud.zakawa.de
       - LETSENCRYPT_EMAIL=k@zakawa.de
