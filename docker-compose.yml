@@ -24,7 +24,7 @@ services:
     restart: always
     volumes:
       - nextcloud:/var/www/html
-      - ${NEXTCLOUD_ROOT}/data:/mnt/storagespace/nextcloud/data
+      - /mnt/storagespace/nextcloud/data:/var/www/html/data:rw
     environment:
       - NEXTCLOUD_DATA_DIR=/mnt/storagespace/nextcloud/data
       - VIRTUAL_HOST=cloud.zakawa.de
@@ -100,9 +100,6 @@ services:
 volumes:
   db:
   nextcloud:
-  NEXTCLOUD_DATA_DIR:
-    name: NEXTCLOUD_DATA_DIR
-    external: true
   certs:
   acme:
   vhost.d:
