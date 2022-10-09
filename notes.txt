@@ -8,9 +8,22 @@ add the to the config the known hosts
 and test it
  - sudo docker-compose exec --user www-data app php occ config:system:get trusted_domains
  
- 
- sudo docker-compose exec --user www-data app php occ files_external:create MyMount local null::null --user sascha --config datadir=/mnt/storagespace/nextcloud/data
- 
+show the mounts: 
  sudo docker-compose exec --user www-data app php occ files_external:export > out.json
  
  
+cleaning:
+  sudo docker system prune
+  sudo docker system prune --volumes -a
+
+ 
+mount_id=$(sudo docker-compose exec --user www-data app php occ files_external:create Home local null::null -c datadir=/mnt/storagespace/nextcloud/data --output=json)
+sudo docker-compose exec --user "$uid":"$gid" app php occ files_external:applicable --add-user=myuser "$mount_id"
+
+
+sudo chown -R www-data:www-data /mnt/storagespace/nextcloud
+sudo chmod -R 0750 /mnt/storagespace/nextcloud
+
+sudo -u www-data bash
+cd /mnt/storagespace/nextcloud
+mkdir data

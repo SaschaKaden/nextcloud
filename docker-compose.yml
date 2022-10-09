@@ -1,5 +1,7 @@
 version: '3'
 
+
+
 services:  
   db:
     image: mariadb:10.5
@@ -24,9 +26,9 @@ services:
     restart: always
     volumes:
       - nextcloud:/var/www/html
-      - ${NEXTCLOUD_ROOT}/data:/mnt/storagespace/nextcloud/data
+      - ${NEXTCLOUD_ROOT}/data:/mnt/storagespace/nextcloud/data:ro
     environment:
-      - NEXTCLOUD_DATA_DIR=/mnt/storagespace/nextcloud/data
+      - NEXTCLOUD_DATA_DIR=/mnt/storagespace/nextcloud/data:ro
       - VIRTUAL_HOST=cloud.zakawa.de
       - LETSENCRYPT_HOST=cloud.zakawa.de
       - LETSENCRYPT_EMAIL=k@zakawa.de
@@ -95,7 +97,6 @@ services:
 #      - SSL_CERT=/certs/servhostname.local.crt
 #    networks:
 #      - proxy-tier
-
 
 volumes:
   db:
