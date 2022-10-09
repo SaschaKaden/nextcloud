@@ -1,11 +1,16 @@
 start the docker-compose
- - docker-compose build --pull
- - docker-compose up -d
+ - sudo docker-compose build --pull
+ - sudo docker-compose up -d
 
 add the to the config the known hosts
  - sudo docker-compose exec --user www-data app php occ config:system:set trusted_domains 1 -- value=cloud.zakawa.de
  
 and test it
  - sudo docker-compose exec --user www-data app php occ config:system:get trusted_domains
+ 
+ 
+ sudo docker-compose exec --user www-data app php occ files_external:create MyMount local null::null --user sascha --config datadir=/mnt/storagespace/nextcloud/data
+ 
+ sudo docker-compose exec --user www-data app php occ files_external:export > out.json
  
  

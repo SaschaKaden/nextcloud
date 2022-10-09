@@ -23,6 +23,7 @@ services:
     restart: always
     volumes:
       - nextcloud:/var/www/html
+      - ${NEXTCLOUD_ROOT}/data:/mnt/storagespace/nextcloud/data
     environment:
       - VIRTUAL_HOST=cloud.zakawa.de
       - LETSENCRYPT_HOST=cloud.zakawa.de
@@ -92,6 +93,7 @@ services:
 #      - SSL_CERT=/certs/servhostname.local.crt
 #    networks:
 #      - proxy-tier
+
 
 volumes:
   db:
