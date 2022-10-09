@@ -26,7 +26,9 @@ services:
     restart: always
     volumes:
       - nextcloud:/var/www/html
-      - ${NEXTCLOUD_ROOT}/data:/mnt/storagespace/nextcloud/data:ro
+      - type: bind
+        source: /mnt/storagespace/nextcloud/data
+        target: /var/www/html/data
     environment:
       - NEXTCLOUD_DATA_DIR=/mnt/storagespace/nextcloud/data:ro
       - VIRTUAL_HOST=cloud.zakawa.de
