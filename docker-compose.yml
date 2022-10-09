@@ -35,12 +35,12 @@ services:
     env_file:
       - db.env
     depends_on:
-      - dbfrontend:
-    image: node:lts
-    volumes:
-      - type: bind
-        source: ./static
-        target: /opt/app/staticvolumes:
+      - db
+      - redis
+    networks:
+      - proxy-tier
+      - default
+
   myapp:
       - redis
     networks:
