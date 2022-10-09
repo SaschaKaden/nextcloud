@@ -1,14 +1,6 @@
 version: '3.9'
 
-services:
-  frontend:
-    image: node:lts
-    volumes:
-      - type: bind
-        source: ./static
-        target: /mnt/storagespace/nextcloud/data:
-  myapp:
-  
+services:  
   db:
     image: mariadb:10.5
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
