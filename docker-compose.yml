@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3'
 
 services:  
   db:
@@ -8,7 +8,7 @@ services:
     volumes:
       - db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=myqslPWsecrett
+      - MYSQL_ROOT_PASSWORD=myqslPWsecret
       - MARIADB_AUTO_UPGRADE=1
       - MARIADB_DISABLE_UPGRADE_BACKUP=1
     env_file:
@@ -36,12 +36,6 @@ services:
       - db.env
     depends_on:
       - db
-      - redis
-    networks:
-      - proxy-tier
-      - default
-
-  myapp:
       - redis
     networks:
       - proxy-tier
