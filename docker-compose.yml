@@ -23,8 +23,6 @@ services:
     container_name: nextcloud
     restart: always
     volumes:
-      - type: bind
-          target: /mnt/storagespace/nextcloud/data:
       - nextcloud:/var/www/html
       - ${NEXTCLOUD_ROOT}/data:/mnt/storagespace/nextcloud/data
     environment:
