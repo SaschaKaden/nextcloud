@@ -33,6 +33,8 @@ services:
       - VIRTUAL_HOST=cloud.zakawa.de
       - LETSENCRYPT_HOST=cloud.zakawa.de
       - LETSENCRYPT_EMAIL=k@zakawa.de
+      - OVERWRITE.CLI.URL=cloud.zakawa.de
+      - OVERWRITEPROTOCOL=https
       - MYSQL_HOST=db
       - REDIS_HOST=redis
     env_file:
